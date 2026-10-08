@@ -1,9 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  event = "VeryLazy", -- 懒加载，不拖慢启动页速度
+  event = "VeryLazy", -- Carga diferida para no ralentizar la pantalla de inicio
   init = function()
-    -- 在 lualine 加载前防止状态栏闪烁
+    -- Evitar parpadeo de la barra de estado antes de cargar lualine
     vim.g.lualine_laststatus = vim.o.laststatus
     if vim.fn.argc(-1) > 0 then
       vim.o.statusline = " "
@@ -12,17 +12,17 @@ return {
     end
   end,
   opts = function()
-    -- 恢复之前的全局状态栏设置 (我们在 options.lua 里设置的 3)
+    -- Restaurar la barra de estado global anterior (el 3 definido en options.lua)
     vim.o.laststatus = vim.g.lualine_laststatus
 
     return {
       options = {
-        theme = "auto", -- 直接使用你安装的主题
-        globalstatus = true,  -- 开启全局唯一状态栏
+        theme = "auto", -- Usar directamente el tema instalado
+        globalstatus = true,  -- Activar una única barra de estado global
         component_separators = { left = "│", right = "│" },
-        section_separators = { left = "", right = "" }, -- 使用圆润的边缘过渡 (Kitty 完美支持)
+        section_separators = { left = "", right = "" }, -- Usar bordes redondeados (Kitty los soporta perfectamente)
         disabled_filetypes = { 
-          statusline = { "dashboard", "lazy" } -- 在启动页和包管理器界面隐藏状态栏
+          statusline = { "dashboard", "lazy" } -- Ocultar la barra de estado en la pantalla de inicio y en el gestor de plugins
         },
       },
       sections = {
@@ -30,18 +30,18 @@ return {
         lualine_b = { "branch" },
         lualine_c = {
           {
-            "diagnostics", -- 原生错误诊断提示
+            "diagnostics", -- Diagnósticos de errores nativos
             symbols = { error = " ", warn = " ", info = " ", hint = " " },
           },
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { 
             "filename", 
-            path = 1, -- 0: 仅文件名, 1: 相对路径, 2: 绝对路径
+            path = 1, -- 0: solo nombre, 1: ruta relativa, 2: ruta absoluta
             symbols = { modified = "  ", readonly = "  ", unnamed = "[No Name]" }
           },
         },
         lualine_x = {
-          -- 简单的 Git 差异显示
+          -- Vista simple de diferencias de Git
           {
             "diff",
             symbols = { added = " ", modified = " ", removed = " " },
