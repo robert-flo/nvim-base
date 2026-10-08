@@ -1,28 +1,28 @@
 
-vim.opt.number = true           -- 显示绝对行号
-vim.opt.relativenumber = false  -- 关闭相对行号 (按需开启)
-vim.opt.expandtab = true        -- 将 Tab 转换为空格
-vim.opt.shiftwidth = 4          -- 缩进为 4 个空格 (适合 C++/Python)
-vim.opt.tabstop = 4             -- Tab 键等同于 4 个空格
-vim.opt.smartindent = true      -- 开启智能缩进
+vim.opt.number = true           -- Mostrar números de línea absolutos
+vim.opt.relativenumber = false  -- Desactivar números relativos (actívalos si los necesitas)
+vim.opt.expandtab = true        -- Convertir Tab en espacios
+vim.opt.shiftwidth = 4          -- Indentación de 4 espacios (adecuado para C++/Python)
+vim.opt.tabstop = 4             -- Un Tab equivale a 4 espacios
+vim.opt.smartindent = true      -- Activar indentación inteligente
 
-vim.opt.termguicolors = true    -- 开启 24 位真色彩 (Kitty 完美支持)
-vim.opt.swapfile = false        -- 关闭烦人的 .swp 交换文件
-vim.opt.mouse = "a"             -- 允许使用鼠标
-vim.opt.laststatus = 3          -- 全局唯一底部状态栏
-vim.opt.clipboard = "unnamedplus" -- 允许 Neovim 与系统剪贴板互通 (极其重要)
+vim.opt.termguicolors = true    -- Activar color verdadero de 24 bits (Kitty lo soporta perfectamente)
+vim.opt.swapfile = false        -- Desactivar los molestos archivos de intercambio .swp
+vim.opt.mouse = "a"             -- Permitir el uso del ratón
+vim.opt.laststatus = 3          -- Una única barra de estado global
+vim.opt.clipboard = "unnamedplus" -- Compartir portapapeles entre Neovim y el sistema (muy importante)
 
-vim.opt.formatoptions:remove({ "c", "r", "o" }) -- 禁止换行时自动延续注释
-vim.opt.cursorline = true                       -- 开启光标行提示
-vim.opt.cursorlineopt = "number"                -- 仅高亮行号部分
-vim.opt.iskeyword:append("-")                   -- 把包含中划线的词语视为一个整体
-vim.o.whichwrap = vim.o.whichwrap .. "<>,h,l"   -- 允许左右键跨行移动
-vim.opt.wrap = false                            -- 关闭自动换行 (长代码超出窗口边缘时直接隐藏)
+vim.opt.formatoptions:remove({ "c", "r", "o" }) -- No continuar comentarios automáticamente al saltar de línea
+vim.opt.cursorline = true                       -- Resaltar la línea del cursor
+vim.opt.cursorlineopt = "number"                -- Resaltar solo el número de línea
+vim.opt.iskeyword:append("-")                   -- Tratar palabras con guion como una sola
+vim.o.whichwrap = vim.o.whichwrap .. "<>,h,l"   -- Permitir que las flechas izquierda/derecha crucen líneas
+vim.opt.wrap = false                            -- Desactivar ajuste de línea (el código largo se oculta tras el borde)
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- 设置 Neovim 启动和打开文件时，默认不折叠任何代码
+-- Al iniciar Neovim y abrir archivos, no plegar ningún bloque de código por defecto
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
@@ -30,4 +30,4 @@ vim.opt.foldlevelstart = 99
 
 vim.opt.undofile = true
 
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "取消搜索高亮" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Quitar resaltado de búsqueda" })
