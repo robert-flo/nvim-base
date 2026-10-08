@@ -8,6 +8,7 @@ return {
       { "<leader>f", group = "Buscar (Find)" },
       { "<leader>s", group = "Ventanas (Split)" },
       { "<leader>n", group = "Notificaciones (Noice)" },
+      { "<leader>g", group = "Git" },
     },
   },
   keys = {
