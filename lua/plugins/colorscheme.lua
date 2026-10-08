@@ -2,9 +2,9 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000, -- 保持最高优先级
+    priority = 1000, -- Mantener la máxima prioridad
     opts = {
-      -- 保留 LSP 诊断的漂亮波浪线
+      -- Conservar el bonito subrayado ondulado de los diagnósticos LSP
       lsp_styles = {
         underlines = {
           errors = { "undercurl" },
@@ -13,26 +13,26 @@ return {
           information = { "undercurl" },
         },
       },
-      -- 开启你目前/未来会用到的插件 UI 整合
+      -- Activar la integración visual con plugins que usas ahora o usarás en el futuro
       integrations = {
-        cmp = true,             -- 代码补全
+        cmp = true,             -- Autocompletado
         blink_cmp = true,
-        dashboard = true,       -- 启动页
-        gitsigns = true,        -- Git 提示
-        illuminate = true,      -- 相同单词高亮
-        indent_blankline = { enabled = true }, -- 缩进线
-        mason = true,           -- LSP 包管理器
-        native_lsp = { enabled = true },       -- 原生 LSP
-        noice = true,           -- 消息弹窗
-        telescope = true,       -- 搜索器
-        treesitter = true,      -- 语法高亮
-        which_key = true,       -- 快捷键提示
+        dashboard = true,       -- Pantalla de inicio
+        gitsigns = true,        -- Indicadores de Git
+        illuminate = true,      -- Resaltado de palabras iguales
+        indent_blankline = { enabled = true }, -- Guías de indentación
+        mason = true,           -- Gestor de paquetes LSP
+        native_lsp = { enabled = true },       -- LSP nativo
+        noice = true,           -- Ventanas de mensajes
+        telescope = true,       -- Buscador
+        treesitter = true,      -- Resaltado de sintaxis
+        which_key = true,       -- Ayuda de atajos
       },
     },
     config = function(_, opts)
-      -- 先把上面的 opts 配置喂给 catppuccin
+      -- Primero pasa las opts anteriores a catppuccin
       require("catppuccin").setup(opts)
-      -- 然后启动主题
+      -- Luego activa el tema
       vim.cmd.colorscheme("catppuccin")
     end,
   }
