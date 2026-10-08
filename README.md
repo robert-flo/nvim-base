@@ -19,7 +19,7 @@ git clone https://github.com/StatIndet/nvim.git ~/.config/nvim
 nvim
 ```
 
-Al abrirlo por primera vez, `lazy.nvim` se instala solo y descarga todos los plugins. Mason instala `pyright` y `lua_ls`; `clangd` se usa desde el sistema.
+Al abrirlo por primera vez, `lazy.nvim` se instala solo y descarga todos los plugins. Mason instala `pyright`, `lua_ls` y `bashls`; `clangd` se usa desde el sistema. Para tener avisos de errores en scripts de Bash, instala también `shellcheck` (`:MasonInstall shellcheck` o `sudo pacman -S shellcheck`).
 
 ## Estructura
 
@@ -46,7 +46,8 @@ lua/plugins/          -- Un archivo por plugin
 | Buscador | telescope (con fzf nativo) |
 | Esquema de símbolos | aerial |
 | Autocompletado | blink.cmp (preset `super-tab`) |
-| LSP | mason + mason-lspconfig + nvim-lspconfig (pyright, lua_ls; clangd del sistema) |
+| LSP | mason + mason-lspconfig + nvim-lspconfig (pyright, lua_ls, bashls; clangd del sistema) |
+| Git | gitsigns |
 | Sintaxis | nvim-treesitter (rama main; C, C++, Python, Lua, Bash, Markdown, JavaScript, QML) |
 | Mensajes/UI | noice + nvim-notify |
 | Ayuda de atajos | which-key |
@@ -120,6 +121,20 @@ Dentro de neo-tree:
 | `h` | Colapsar carpeta |
 | `Y` | Copiar la ruta al portapapeles |
 
+### Git (gitsigns)
+
+| Atajo | Acción |
+|---|---|
+| `]h` / `[h` | Siguiente / anterior bloque de cambios |
+| `Espacio gp` | Previsualizar el cambio |
+| `Espacio gs` | Preparar el cambio (stage) |
+| `Espacio gr` | Descartar el cambio |
+| `Espacio gS` | Preparar todo el archivo |
+| `Espacio gR` | Descartar todo el archivo |
+| `Espacio gb` | Autor de la línea (blame) |
+| `Espacio gB` | Alternar blame en línea |
+| `Espacio gd` | Ver diferencias del archivo |
+
 ### Autocompletado (blink.cmp, preset `super-tab`)
 
 | Atajo | Acción |
@@ -164,10 +179,10 @@ Es una buena base, más un editor de texto bonito con LSP que un entorno de desa
 | Formateador (por ejemplo `conform.nvim`) | No formatea al guardar (clang-format, black...) |
 | Atajos de LSP propios | Dependes de los atajos por defecto de Neovim (`grn`, `gra`, `grr`...), que son poco conocidos |
 | Depurador (`nvim-dap`) | No se puede depurar C++ desde el editor |
-| Integración con Git | `gitsigns` se instala solo como dependencia, sin atajos (no hay blame, ni stage de bloques, ni lazygit) |
+| Integración completa con Git | Hay gitsigns para cambios, blame y stage por bloques, pero no hay cliente completo (lazygit, fugitive, neogit) |
 | Terminal integrada | No hay forma rápida de compilar y ejecutar |
 | Herramientas de diagnóstico | No hay Trouble ni una lista cómoda de errores |
 
 También hay restos sin usar: `autocmds.lua` está vacío y el tema activa integraciones para plugins que no están instalados (`cmp`, `illuminate`).
 
-Para usarla a diario en C++, lo recomendable sería añadir por este orden: un formateador, atajos de LSP, una herramienta de diagnósticos, integración con Git y una terminal.
+Para usarla a diario en C++, lo recomendable sería añadir por este orden: un formateador, atajos de LSP, una herramienta de diagnósticos, un cliente de Git y una terminal.
