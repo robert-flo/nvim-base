@@ -1,46 +1,46 @@
 -- ==========================================
--- 定义快捷键的简写函数，让代码更干净
+-- Alias corto para definir atajos y mantener el código limpio
 -- ==========================================
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- ==========================================
--- 1. 基础编辑操作 (Core)
+-- 1. Edición básica (Core)
 -- ==========================================
--- 极速保存：在普通、插入、可视模式下，按 Ctrl+s 直接保存并回到普通模式
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "保存文件" })
+-- Guardado rápido: en modo normal, inserción y visual, Ctrl+s guarda y vuelve a modo normal
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Guardar archivo" })
 
--- 清除搜索高亮：搜索完关键字后，按 空格+h 取消那些晃眼的黄色背景
-map("n", "<leader>h", ":nohl<CR>", { desc = "清除搜索高亮" })
-
--- ==========================================
--- 2. 窗口分屏与跳转 (Window Management)
--- ==========================================
--- 垂直/水平分屏
-map("n", "<leader>sv", "<C-w>v", { desc = "垂直分屏" })
-map("n", "<leader>sh", "<C-w>s", { desc = "水平分屏" })
-map("n", "<leader>se", "<C-w>=", { desc = "恢复等宽等高" })
-map("n", "<leader>sx", "<cmd>close<CR>", { desc = "关闭当前分屏" })
-
--- 跨窗口移动：使用 Ctrl + h/j/k/l 替代繁琐的 Ctrl+w + 方向键
-map("n", "<C-h>", "<C-w>h", { desc = "跳转到左侧窗口" })
-map("n", "<C-j>", "<C-w>j", { desc = "跳转到下方窗口" })
-map("n", "<C-k>", "<C-w>k", { desc = "跳转到上方窗口" })
-map("n", "<C-l>", "<C-w>l", { desc = "跳转到右侧窗口" })
+-- Limpiar resaltado de búsqueda: tras buscar, Espacio+h quita el fondo amarillo
+map("n", "<leader>h", ":nohl<CR>", { desc = "Limpiar resaltado de búsqueda" })
 
 -- ==========================================
--- 3. Barbar 标签页管理 (Buffer Navigation)
+-- 2. Divisiones y navegación entre ventanas (Window Management)
 -- ==========================================
--- 极其符合直觉的标签切换：Shift + h/l 左右横跳
-map("n", "<S-h>", "<Cmd>BufferPrevious<CR>", { desc = "上一个标签页" })
-map("n", "<S-l>", "<Cmd>BufferNext<CR>", { desc = "下一个标签页" })
+-- División vertical/horizontal
+map("n", "<leader>sv", "<C-w>v", { desc = "División vertical" })
+map("n", "<leader>sh", "<C-w>s", { desc = "División horizontal" })
+map("n", "<leader>se", "<C-w>=", { desc = "Igualar tamaño de ventanas" })
+map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Cerrar ventana actual" })
 
--- 关闭当前标签页
-map("n", "<leader>c", "<Cmd>BufferClose<CR>", { desc = "关闭当前标签页" })
+-- Moverse entre ventanas: Ctrl + h/j/k/l en lugar de Ctrl+w + dirección
+map("n", "<C-h>", "<C-w>h", { desc = "Ir a la ventana izquierda" })
+map("n", "<C-j>", "<C-w>j", { desc = "Ir a la ventana inferior" })
+map("n", "<C-k>", "<C-w>k", { desc = "Ir a la ventana superior" })
+map("n", "<C-l>", "<C-w>l", { desc = "Ir a la ventana derecha" })
 
 -- ==========================================
--- 4. 代码编辑增强 (Visual Mode)
+-- 3. Pestañas con Barbar (Buffer Navigation)
 -- ==========================================
--- 魔法操作：在可视模式（按v选中代码）下，按大写 J 或 K 可以把整块代码上下移动，并自动保持缩进对齐！
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "向下移动当前块" })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "向上移动当前块" })
+-- Cambio de pestaña intuitivo: Shift + h/l para ir a izquierda/derecha
+map("n", "<S-h>", "<Cmd>BufferPrevious<CR>", { desc = "Pestaña anterior" })
+map("n", "<S-l>", "<Cmd>BufferNext<CR>", { desc = "Pestaña siguiente" })
+
+-- Cerrar la pestaña actual
+map("n", "<leader>c", "<Cmd>BufferClose<CR>", { desc = "Cerrar pestaña actual" })
+
+-- ==========================================
+-- 4. Mejoras de edición (Visual Mode)
+-- ==========================================
+-- En modo visual (selecciona con v), J o K mayúsculas mueven el bloque abajo/arriba manteniendo la indentación
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Mover bloque hacia abajo" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Mover bloque hacia arriba" })
