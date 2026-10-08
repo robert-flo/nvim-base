@@ -1,7 +1,7 @@
 return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-        ensure_installed = { "pyright", "lua_ls" },
+        ensure_installed = { "pyright", "lua_ls", "bashls" },
     },
     dependencies = {
         { "mason-org/mason.nvim", opts = { ui = { border = "rounded" } } },
