@@ -1,10 +1,15 @@
 return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-        ensure_installed = { "clangd", "pyright", "lua_ls" },
+        ensure_installed = { "pyright", "lua_ls" },
     },
     dependencies = {
         { "mason-org/mason.nvim", opts = { ui = { border = "rounded" } } },
         "neovim/nvim-lspconfig",
     },
+    config = function(_, opts)
+        require("mason-lspconfig").setup(opts)
+        -- clangd se usa desde el sistema (pacman), no desde Mason
+        vim.lsp.enable("clangd")
+    end,
 }
