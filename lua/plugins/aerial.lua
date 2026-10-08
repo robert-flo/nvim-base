@@ -4,34 +4,34 @@ return {
      "nvim-treesitter/nvim-treesitter",
      "nvim-tree/nvim-web-devicons"
   },
-  -- 绑定极其顺手的全局快捷键
+  -- Atajos globales muy cómodos
   keys = {
-    { "<leader>o", "<cmd>AerialToggle!<CR>", desc = "大纲视图 (Aerial)" },
-    -- 联动 Telescope：在当前文件的所有函数/变量中进行模糊搜索
-    { "<leader>fs", "<cmd>Telescope aerial<CR>", desc = "搜索当前文件符号 (Symbols)" },
+    { "<leader>o", "<cmd>AerialToggle!<CR>", desc = "Vista de esquema (Aerial)" },
+    -- Integración con Telescope: búsqueda difusa entre todas las funciones/variables del archivo actual
+    { "<leader>fs", "<cmd>Telescope aerial<CR>", desc = "Buscar símbolos del archivo (Symbols)" },
   },
   opts = {
-    -- 引擎优先级：优先使用最精准的 LSP，其次是你的 Treesitter
+    -- Prioridad de motores: primero LSP (el más preciso), luego Treesitter
     backends = { "lsp", "treesitter", "markdown" },
     
     layout = {
-      -- 核心设定：永远优先在屏幕右侧打开，还原 VS Code 体验
+      -- Ajuste clave: abrir siempre a la derecha de la pantalla, como en VS Code
       default_direction = "prefer_right", 
       max_width = { 40, 0.2 },
       width = nil,
       min_width = 15,
     },
     
-    -- 视觉反馈：在右侧大纲中，高亮指示你当前所在的函数位置
+    -- Indicador visual: en el esquema de la derecha, resalta la función en la que estás
     highlight_mode = "split_width",
     
-    -- 极致联动：当你在右侧大纲里上下移动光标时，左侧代码会自动实时滚动
+    -- Al mover el cursor por el esquema, el código de la izquierda se desplaza en tiempo real
     autojump = true,
     
-    -- 当你按回车选中某个函数并跳转后，大纲面板依然保持打开状态
+    -- Al pulsar Enter sobre una función y saltar a ella, el panel de esquema sigue abierto
     close_on_select = false,
     
-    -- 开启树状图的连接参考线，UI 更具层次感
+    -- Mostrar guías de conexión del árbol para una interfaz con más jerarquía
     show_guides = true,
     guides = {
       mid_item = "├─",
@@ -40,7 +40,7 @@ return {
       whitespace = "  ",
     },
   },
-  -- 挂载 Telescope 扩展引擎的底层逻辑
+  -- Carga la extensión de Telescope
   config = function(_, opts)
     require("aerial").setup(opts)
     require("telescope").load_extension("aerial")
