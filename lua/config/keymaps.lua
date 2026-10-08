@@ -2,7 +2,6 @@
 -- Alias corto para definir atajos y mantener el código limpio
 -- ==========================================
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 -- ==========================================
 -- 1. Edición básica (Core)
@@ -42,5 +41,5 @@ map("n", "<leader>c", "<Cmd>BufferClose<CR>", { desc = "Cerrar pestaña actual" 
 -- 4. Mejoras de edición (Visual Mode)
 -- ==========================================
 -- En modo visual (selecciona con v), J o K mayúsculas mueven el bloque abajo/arriba manteniendo la indentación
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Mover bloque hacia abajo" })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Mover bloque hacia arriba" })
+map("x", "J", ":m '>+1<CR>gv=gv", { desc = "Mover bloque hacia abajo", silent = true })
+map("x", "K", ":m '<-2<CR>gv=gv", { desc = "Mover bloque hacia arriba", silent = true })

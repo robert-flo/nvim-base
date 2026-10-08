@@ -19,7 +19,7 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- No continuar comentarios auto
 vim.opt.cursorline = true                       -- Resaltar la línea del cursor
 vim.opt.cursorlineopt = "number"                -- Resaltar solo el número de línea
 vim.opt.iskeyword:append("-")                   -- Tratar palabras con guion como una sola
-vim.o.whichwrap = vim.o.whichwrap .. "<>,h,l"   -- Permitir que las flechas izquierda/derecha crucen líneas
+vim.opt.whichwrap:append("<,>,h,l")            -- Permitir que las flechas izquierda/derecha crucen líneas
 vim.opt.wrap = false                            -- Desactivar ajuste de línea (el código largo se oculta tras el borde)
 
 vim.g.loaded_netrw = 1
