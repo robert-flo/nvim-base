@@ -1,3 +1,6 @@
+-- La tecla líder debe definirse antes de crear cualquier atajo con <leader>
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 vim.opt.number = true           -- Mostrar números de línea absolutos
 vim.opt.relativenumber = false  -- Desactivar números relativos (actívalos si los necesitas)
