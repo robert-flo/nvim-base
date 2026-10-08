@@ -3,11 +3,11 @@ return {
   event = "VeryLazy",
   opts = {
     preset = "modern",
-    -- 为前缀键分组命名，按下 空格 后菜单更清晰
+    -- Nombres para los grupos de prefijos, para que el menú sea más claro al pulsar Espacio
     spec = {
-      { "<leader>f", group = "搜索 (Find)" },
-      { "<leader>s", group = "分屏 (Split)" },
-      { "<leader>n", group = "通知 (Noice)" },
+      { "<leader>f", group = "Buscar (Find)" },
+      { "<leader>s", group = "Ventanas (Split)" },
+      { "<leader>n", group = "Notificaciones (Noice)" },
     },
   },
   keys = {
@@ -16,7 +16,7 @@ return {
       function()
         require("which-key").show({ global = false })
       end,
-      desc = "当前缓冲区快捷键 (which-key)",
+      desc = "Atajos del buffer actual (which-key)",
     },
   },
 }
