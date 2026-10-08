@@ -9,25 +9,25 @@ return {
       build = "make" 
     },
   },
-  -- 借鉴 LazyVim 的按需加载快捷键体系
+  -- Atajos con carga bajo demanda, inspirados en LazyVim
   keys = {
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "搜索文件 (Find Files)" },
-    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "全局搜词 (Live Grep)" },
-    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "切换已打开的文件 (Buffers)" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "最近打开的文件 (Recent)" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Buscar archivos (Find Files)" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Buscar texto global (Live Grep)" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Cambiar entre archivos abiertos (Buffers)" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Archivos recientes (Recent)" },
   },
   config = function()
     local telescope = require("telescope")
 
-    -- 核心设置与 UI 美化
+    -- Configuración principal y apariencia
     telescope.setup({
       defaults = {
-        prompt_prefix = " ",   -- 借鉴 LazyVim 的现代图标
+        prompt_prefix = " ",   -- Iconos modernos inspirados en LazyVim
         selection_caret = " ",
       },
     })
 
-    -- 极其重要：激活 C 语言底层的 fzf 加速引擎
+    -- Muy importante: activar el motor fzf nativo en C para acelerar la búsqueda
     telescope.load_extension("fzf")
   end,
 }
