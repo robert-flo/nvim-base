@@ -6,6 +6,13 @@ return {
     "MunifTanjim/nui.nvim",
     "nvim-tree/nvim-web-devicons",
   },
+  -- neo-tree se carga bajo demanda, así que hay que cargarlo a mano al abrir un directorio (nvim .)
+  init = function()
+    local arg = vim.fn.argv(0)
+    if arg ~= "" and vim.fn.isdirectory(arg) == 1 then
+      require("neo-tree")
+    end
+  end,
   -- Atajo global: Espacio+e muestra u oculta el árbol de archivos
   keys = {
     {
