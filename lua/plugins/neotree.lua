@@ -6,7 +6,7 @@ return {
     "MunifTanjim/nui.nvim",
     "nvim-tree/nvim-web-devicons",
   },
-  -- 全局快捷键：按 空格+e 呼出或隐藏文件树
+  -- Atajo global: Espacio+e muestra u oculta el árbol de archivos
   keys = {
     {
       "<leader>e",
@@ -17,27 +17,27 @@ return {
     },
   },
   opts = {
-    -- 默认显示哪些数据源
+    -- Fuentes de datos que se muestran por defecto
     sources = { "filesystem", "buffers", "git_status" },
-    -- 文件系统配置
+    -- Configuración del sistema de archivos
     filesystem = {
       bind_to_cwd = false,
       follow_current_file = { 
-        enabled = true,         -- 自动定位到当前打开的文件
-        leave_dirs_open = false -- 展开到目标文件后，保持其他无关目录关闭，维持整洁
+        enabled = true,         -- Ubicar automáticamente el archivo abierto actualmente
+        leave_dirs_open = false -- Al expandir hasta el archivo, mantener cerrados los demás directorios para que quede ordenado
       }, 
-      use_libuv_file_watcher = true, -- 监听文件系统变化，自动刷新
-      hijack_netrw_behavior = "open_default", -- ✨ 彻底接管 Neovim 默认的目录浏览器，防止终端打开时出现原生丑陋界面
+      use_libuv_file_watcher = true, -- Vigilar cambios en el sistema de archivos y refrescar automáticamente
+      hijack_netrw_behavior = "open_default", -- ✨ Reemplazar por completo el explorador de directorios nativo de Neovim (netrw)
       
-      -- ✨ 核心修改区：解除所有隐藏封印
+      -- ✨ Ajuste clave: mostrar todos los archivos ocultos
       filtered_items = {
-        visible = false,         -- 保持 false，让底下的细分规则生效
-        hide_dotfiles = false,   -- 永久显示以 . 开头的文件 (如 .config, .gitignore)
-        hide_gitignored = false, -- 永久显示被 git 忽略的编译产物或缓存文件
-        hide_hidden = false,     -- 显示系统级别的隐藏文件
+        visible = false,         -- Mantener en false para que se apliquen las reglas de abajo
+        hide_dotfiles = false,   -- Mostrar siempre los archivos que empiezan por . (como .config, .gitignore)
+        hide_gitignored = false, -- Mostrar siempre los archivos ignorados por git (compilados, caché)
+        hide_hidden = false,     -- Mostrar los archivos ocultos del sistema
       },
     },
-    -- 窗口内快捷键映射 (享受 Vim 的 h/l 丝滑导航)
+    -- Atajos dentro de la ventana (navegación fluida con h/l al estilo Vim)
     window = {
       mappings = {
         ["l"] = "open",
@@ -54,7 +54,7 @@ return {
         },
       },
     },
-    -- UI 图标美化
+    -- Iconos de la interfaz
     default_component_configs = {
       indent = {
         with_expanders = true,
