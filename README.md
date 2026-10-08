@@ -10,6 +10,7 @@ Se ve y se siente parecida a VS Code, pero ligera: explorador de archivos a la i
 - `git`, `make` y un compilador de C (para `telescope-fzf-native` y los parsers de treesitter)
 - Una [Nerd Font](https://www.nerdfonts.com/) en la terminal
 - `ripgrep` (para la búsqueda global de Telescope)
+- `clangd` instalado en el sistema (por ejemplo `sudo pacman -S clang`)
 
 ## Instalación
 
@@ -18,7 +19,7 @@ git clone https://github.com/StatIndet/nvim.git ~/.config/nvim
 nvim
 ```
 
-Al abrirlo por primera vez, `lazy.nvim` se instala solo y descarga todos los plugins. Mason instala `clangd`, `pyright` y `lua_ls`.
+Al abrirlo por primera vez, `lazy.nvim` se instala solo y descarga todos los plugins. Mason instala `pyright` y `lua_ls`; `clangd` se usa desde el sistema.
 
 ## Estructura
 
@@ -45,7 +46,7 @@ lua/plugins/          -- Un archivo por plugin
 | Buscador | telescope (con fzf nativo) |
 | Esquema de símbolos | aerial |
 | Autocompletado | blink.cmp (preset `super-tab`) |
-| LSP | mason + mason-lspconfig + nvim-lspconfig (clangd, pyright, lua_ls) |
+| LSP | mason + mason-lspconfig + nvim-lspconfig (pyright, lua_ls; clangd del sistema) |
 | Sintaxis | nvim-treesitter (rama main; C, C++, Python, Lua, Bash, Markdown, JavaScript, QML) |
 | Mensajes/UI | noice + nvim-notify |
 | Ayuda de atajos | which-key |
@@ -167,6 +168,6 @@ Es una buena base, más un editor de texto bonito con LSP que un entorno de desa
 | Terminal integrada | No hay forma rápida de compilar y ejecutar |
 | Herramientas de diagnóstico | No hay Trouble ni una lista cómoda de errores |
 
-También hay restos sin usar: `autocmds.lua` está vacío, `keymaps.lua` declara una variable `opts` que no se usa, y el tema activa integraciones para plugins que no están instalados (`cmp`, `illuminate`).
+También hay restos sin usar: `autocmds.lua` está vacío y el tema activa integraciones para plugins que no están instalados (`cmp`, `illuminate`).
 
 Para usarla a diario en C++, lo recomendable sería añadir por este orden: un formateador, atajos de LSP, una herramienta de diagnósticos, integración con Git y una terminal.
