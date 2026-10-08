@@ -3,10 +3,10 @@ return {
   lazy = false,
   dependencies = { { "nvim-tree/nvim-web-devicons" } },
   opts = function()
-    -- 1. 获取系统当前的星期
+    -- 1. Obtener el día de la semana actual del sistema
     local today = os.date("%A")
 
-    -- 2. 准备周一到周日的动态字库 (完美的实心色块 ANSI Shadow 风格)
+    -- 2. Logos dinámicos de lunes a domingo (estilo ANSI Shadow de bloques sólidos)
     local logos = {
       Monday = [[
         ███╗   ███╗ ██████╗ ███╗   ██╗██████╗  █████╗ ██╗   ██╗
@@ -66,7 +66,7 @@ return {
       ]]
     }
 
-    -- 3. 动态提取今天的 Logo，做上下留白排版
+    -- 3. Tomar el logo de hoy y añadir márgenes arriba y abajo
     local logo = logos[today] or logos["Sunday"]
     logo = string.rep("\n", 7) .. logo .. "\n\n"
 
@@ -76,13 +76,13 @@ return {
       config = {
         header = vim.split(logo, "\n"),
         center = {
-          { action = "Telescope find_files",                           desc = " 查找文件",       icon = " ", key = "f" },
-          { action = "ene | startinsert",                              desc = " 新建文件",        icon = " ", key = "n" },
-          { action = "Telescope oldfiles",                             desc = " 历史文件",       icon = " ", key = "r" },
-          { action = "Telescope live_grep",                            desc = " 全局搜索",       icon = " ", key = "g" },
-          { action = "e ~/.config/nvim/init.lua",                      desc = " 配置文件",        icon = " ", key = "c" },
-          { action = "Lazy",                                           desc = " 插件管理",        icon = "󰒲 ", key = "l" },
-          { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " 退出系统",        icon = " ", key = "q" },
+          { action = "Telescope find_files",                           desc = " Buscar archivo",       icon = " ", key = "f" },
+          { action = "ene | startinsert",                              desc = " Nuevo archivo",        icon = " ", key = "n" },
+          { action = "Telescope oldfiles",                             desc = " Archivos recientes",       icon = " ", key = "r" },
+          { action = "Telescope live_grep",                            desc = " Búsqueda global",       icon = " ", key = "g" },
+          { action = "e ~/.config/nvim/init.lua",                      desc = " Configuración",        icon = " ", key = "c" },
+          { action = "Lazy",                                           desc = " Plugins",        icon = "󰒲 ", key = "l" },
+          { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Salir",        icon = " ", key = "q" },
         },
         footer = function()
           local stats = require("lazy").stats()
@@ -92,18 +92,18 @@ return {
       },
     }
 
-    -- 4. 魔法：将字母缝合到描述的末尾，并做整体居中偏移
+    -- 4. Pegar la tecla al final de la descripción y desplazar el bloque para centrarlo
     for _, button in ipairs(opts.config.center) do
       local desc_width = vim.api.nvim_strwidth(button.desc)
       
-      -- 🕹️ 拉杆 1：控制文字和字母之间的距离
+      -- 🕹️ Ajuste 1: distancia entre el texto y la tecla
       local target_width = 50 
       local padding = target_width - desc_width
       if padding < 0 then padding = 0 end
 
-      -- 🕹️ 拉杆 2：控制整个菜单块向右平移的距离 (配平左侧)
+      -- 🕹️ Ajuste 2: desplazamiento del menú hacia la derecha (para equilibrar el lado izquierdo)
       local shift_right = 12 
-      -- 在图标最左侧塞入固定空格，把整个菜单往屏幕右侧推
+      -- Añade espacios fijos a la izquierda del icono para empujar el menú a la derecha
       button.icon = string.rep(" ", shift_right) .. button.icon
 
       button.desc = button.desc .. string.rep(" ", padding) .. button.key
