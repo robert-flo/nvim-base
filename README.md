@@ -4,6 +4,34 @@ Configuración personal de Neovim, pequeña, moderna y organizada en módulos (u
 
 Se ve y se siente parecida a VS Code, pero ligera: explorador de archivos a la izquierda, pestañas arriba, esquema de funciones a la derecha, buscador difuso de archivos y texto, autocompletado con Tab, y errores y documentación del lenguaje para C/C++, Python y Lua. Todo se maneja con la tecla `Espacio` como prefijo; al pulsarla, which-key muestra un menú con los atajos disponibles.
 
+## Cómo empezar: construirla desde cero
+
+Este repositorio es la referencia completa. La idea es reconstruir la configuración poco a poco, archivo por archivo, entendiendo cada línea antes de pasar a la siguiente, para poder modificarla después con soltura.
+
+### Orden sugerido
+
+| Paso | Archivos | Qué obtienes |
+|---|---|---|
+| 1. Base sin plugins | `init.lua`, `lua/config/options.lua`, `lua/config/keymaps.lua` | Un Neovim cómodo: números de línea, indentación, portapapeles, tecla líder y atajos básicos |
+| 2. Gestor de plugins | `lua/config/lazy.lua`, `lua/plugins/colorscheme.lua` | lazy.nvim funcionando, comprobado con el tema catppuccin |
+| 3. Navegación | `lua/plugins/telescope.lua`, `lua/plugins/neotree.lua` | Buscar archivos y texto, y explorador de archivos |
+| 4. Lenguajes | `lua/plugins/treesitter.lua`, `lua/plugins/mason.lua`, `lua/plugins/blink.lua` | Resaltado de sintaxis, LSP (errores, `K`, renombrar) y autocompletado |
+| 5. Interfaz y extras | `lualine.lua`, `barbar.lua`, `whichkey.lua`, `gitsigns.lua`, `aerial.lua`, `noice.lua`, `dashboard.lua`, `autopairs.lua`, `colorizer.lua`, `indent.lua` | Barra de estado, pestañas, ayuda de atajos, Git, esquema de símbolos y detalles visuales |
+
+### En cada paso
+
+1. Crear una rama para el paso (por ejemplo `feat/paso-1-base`).
+2. Escribir el archivo a mano, consultando la versión de referencia: `git show master:lua/config/options.lua`.
+3. Leer cada opción o atajo y decidir si se queda, se cambia o se quita.
+4. Probarlo: reiniciar Neovim, revisar `:messages` y `:checkhealth`, y usar los atajos nuevos.
+5. Hacer commit, abrir un PR hacia `master` y fusionarlo.
+
+Consejos:
+
+- Definir la tecla líder (`vim.g.mapleader`) antes de cualquier atajo con `<leader>`; si no, esos atajos quedan en `\`.
+- Añadir un plugin cada vez: si algo falla, se sabe exactamente qué lo causó.
+- `:Lazy` muestra el estado de los plugins y `:Mason` el de los servidores de lenguaje.
+
 ## Requisitos
 
 - Neovim 0.11 o superior
