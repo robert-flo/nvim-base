@@ -15,7 +15,7 @@ Se ve y se siente parecida a VS Code, pero ligera: explorador de archivos a la i
 ## Instalación
 
 ```bash
-git clone https://github.com/StatIndet/nvim.git ~/.config/nvim
+git clone https://github.com/robert-flo/nvim-base.git ~/.config/nvim
 nvim
 ```
 
